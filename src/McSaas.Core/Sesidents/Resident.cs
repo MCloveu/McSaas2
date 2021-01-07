@@ -38,6 +38,11 @@ namespace McSaas.Sesidents
         /// <summary>
         /// 房子,一对多
         /// </summary>
-        public ICollection<House> Houses { get; }
+        public ICollection<House> Houses { get; set; }
+
+        /// <summary>
+        /// TenantId
+        /// </summary>
+        public int TenantId { get; set; }
     }
 }

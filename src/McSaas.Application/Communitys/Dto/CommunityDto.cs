@@ -40,5 +40,8 @@ namespace McSaas.Communitys.Dto
         /// 房间数
         /// </summary>
         public int HouseNumber { get; set; }
+
+        [Required]
+        public int TenantId { get; set; }
     }
 }

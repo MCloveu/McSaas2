@@ -1,17 +1,15 @@
-﻿using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities;
 using McSaas.Communitys;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace McSaas.Houses
+namespace McSaas.Houses.Dto
 {
-    public class House : FullAuditedEntity
+    public class HouseListDto:Entity
     {
         public string Name { get; set; }
 
         public Community Community { get; set; }
-
-        public int TenantId { get; set; }
     }
 }

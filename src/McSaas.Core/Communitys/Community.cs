@@ -32,5 +32,7 @@ namespace McSaas.Communitys
         /// 房间数
         /// </summary>
         public int HouseNumber { get; set; }
+
+        public int TenantId { get; set; }
     }
 }

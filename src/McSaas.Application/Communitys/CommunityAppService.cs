@@ -30,6 +30,11 @@ namespace McSaas.Communitys
         /// <returns></returns>
         public async Task CreateAsync(CreateCommunityDto input)
         {
+            if (!AbpSession.TenantId.HasValue)
+            {
+                throw new InvalidOperationException("不能添加小区!");
+            }
+
             var community = ObjectMapper.Map<Community>(input);
 
             await _communityRepository.InsertAsync(community);
