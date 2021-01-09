@@ -34,7 +34,7 @@ namespace McSaas.Communitys
             {
                 throw new InvalidOperationException("不能添加小区!");
             }
-
+            input.TenantId = AbpSession.TenantId.Value;
             var community = ObjectMapper.Map<Community>(input);
 
             await _communityRepository.InsertAsync(community);
@@ -60,10 +60,24 @@ namespace McSaas.Communitys
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<PagedResultDto<CommunityDto>> GetAllAsync(PagedCommunityResultRequestDto input)
+        public async Task<PagedResultDto<CommunityDto>> GetAllPagedAsync(PagedCommunityResultRequestDto input)
         {
             var query = await _communityRepository.GetAllListAsync();
 
+            var dto = new PagedResultDto<CommunityDto>(query.Count, ObjectMapper.Map<List<CommunityDto>>(query));
+
+            return dto;
+        }
+
+        /// <summary>
+        /// 返回所有数据，含分页
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<PagedResultDto<CommunityDto>> GetAllAsync()
+        {
+            var query = await _communityRepository.GetAllListAsync();
+           
             var dto = new PagedResultDto<CommunityDto>(query.Count, ObjectMapper.Map<List<CommunityDto>>(query));
 
             return dto;
@@ -83,6 +97,24 @@ namespace McSaas.Communitys
             return dto;
         }
 
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<CommunityEditDto> GetEditAsync(EntityDto<int> input)
+        {
+            var query = await _communityRepository.GetAsync(input.Id);
+
+            var dto = ObjectMapper.Map<CommunityEditDto>(query);
+
+            return dto;
+        }
+
+        /// <summary>
+        /// 获取下拉列表
+        /// </summary>
+        /// <returns></returns>
         public async Task<ListResultDto<CommunityListDto>> GetCommunityList()
         {
             var query = _communityRepository.GetAll();
@@ -108,13 +140,5 @@ namespace McSaas.Communitys
             await _communityRepository.UpdateAsync(community);
         }
 
-        /// <summary>
-        /// 获取下拉列表
-        /// </summary>
-        /// <returns></returns>
-        //public async Task<ListResultDto<CommunityListDto>> GetCommunityList()
-        //{
-
-        //}
     }
 }

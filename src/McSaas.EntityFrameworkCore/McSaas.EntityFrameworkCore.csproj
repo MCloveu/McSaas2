@@ -55,6 +55,8 @@
     <Compile Remove="Migrations\20210107024742_AddCommunity.Designer.cs" />
     <Compile Remove="Migrations\20210107025447_AddCommunity.cs" />
     <Compile Remove="Migrations\20210107025447_AddCommunity.Designer.cs" />
+    <Compile Remove="Migrations\20210108064545_ModifyT.cs" />
+    <Compile Remove="Migrations\20210108064545_ModifyT.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />

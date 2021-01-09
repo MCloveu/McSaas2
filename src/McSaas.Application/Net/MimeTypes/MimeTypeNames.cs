@@ -28,7 +28,7 @@ namespace McSaas.Net.MimeTypes
         ///<summary>Cascading Style Sheets; Defined in RFC 2318</summary>
         public const string TextCss = "text/css";
 
-        ///<summary>commands; subtype resident in Gecko browsers like Firefox 3.5</summary>
+        ///<summary>commands; subtype Owner in Gecko browsers like Firefox 3.5</summary>
         public const string TextCmd = "text/cmd";
 
         ///<summary>Comma-separated values; Defined in RFC 4180</summary>

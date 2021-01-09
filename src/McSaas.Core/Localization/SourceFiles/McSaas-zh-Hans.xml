@@ -101,11 +101,25 @@
 	  <text name="Control">控制台</text>
 	  <text name="WorkDesk">工作台</text>
 
+	  <text name="Save">保存</text>
+	  
+	  <text name="CreateNewCommunity">创建小区</text>
+	  <text name="CommunityManagement">小区管理</text>
 	  <text name="OwnerManagement">业主管理</text>
 	  <text name="Community">小区管理</text>
-	  <text name="Gallery">楼座管理</text>
+	  <text name="Building">楼座管理</text>
 	  <text name="House">房屋管理</text>
 	  <text name="Owner">业主管理</text>
+	  <text name="Communitys">小区管理</text>
+	  <text name="Buildings">楼座管理</text>
+	  <text name="Houses">房屋管理</text>
+	  <text name="Owners">业主管理</text>
+
+	  <text name="Address">地址</text>
+	  <text name="Area">占地面积</text>
+	  <text name="BuildingNumber">楼栋数</text>
+	  <text name="HouseNumber">房间数</text>
+	  <text name="NumberError">房间数和楼栋数必须为正整数</text>
   </texts>
 </localizationDictionary>
 

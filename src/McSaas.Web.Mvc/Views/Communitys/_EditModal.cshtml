@@ -1,0 +1,47 @@
+﻿
+@using McSaas.Web.Models.Common.Modals
+@using McSaas.Communitys.Dto
+@using McSaas
+@model CommunityEditDto
+@{
+    Layout = null;
+}
+@await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("EditCommunity")))
+<form name="CommunityEditForm" role="form" class="form-horizontal">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div class="modal-body">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="community-name">@L("Name")</label>
+            <div class="col-md-9">
+                <input id="community-name" type="text" class="form-control" name="Name" value="@Model.Name" required maxlength="@AppConsts.MaxCommunityNameLength" minlength="2">
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="address">@L("Address")</label>
+            <div class="col-md-9">
+                <input id="address" type="text" class="form-control" name="Address" value="@Model.Address" required maxlength="@AppConsts.MaxAddressLength">
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="area">@L("Area")</label>
+            <div class="col-md-9">
+                <input id="area" type="number" class="form-control" name="Area" value="@Model.Area" required>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="buildingNumber">@L("BuildingNumber")</label>
+            <div class="col-md-9">
+                <input id="buildingNumber" type="number" class="form-control" name="BuildingNumber" value="@Model.BuildingNumber" required>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="houseNumber">@L("HouseNumber")</label>
+            <div class="col-md-9">
+                <input id="houseNumber" type="number" class="form-control" name="HouseNumber" value="@Model.HouseNumber" required>
+            </div>
+        </div>
+    </div>
+    @await Html.PartialAsync("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")
+</form>
+
+<script src="~/view-resources/Views/Communitys/_EditModal.js" asp-append-version="true"></script>

@@ -15,7 +15,6 @@ namespace McSaas.Houses.Dto
 
         public Community Community { get; set; }
 
-        [Required]
-        public int TenantId { get; set; }
+        public int? TenantId { get; set; }
     }
 }

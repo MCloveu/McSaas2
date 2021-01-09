@@ -1,4 +1,5 @@
-﻿using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace McSaas.Communitys
 {
-    public  class Community: FullAuditedEntity
+    public  class Community: FullAuditedEntity, IMayHaveTenant
     {
         /// <summary>
         /// 小区名
@@ -33,6 +34,6 @@ namespace McSaas.Communitys
         /// </summary>
         public int HouseNumber { get; set; }
 
-        public int TenantId { get; set; }
+        public int? TenantId { get; set; }
     }
 }

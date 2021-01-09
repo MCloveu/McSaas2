@@ -9,7 +9,7 @@ namespace McSaas.Migrations
             migrationBuilder.AddColumn<int>(
                 name: "TenantId",
                 schema: "dbo",
-                table: "Resident",
+                table: "Owner",
                 nullable: false,
                 defaultValue: 0);
 
@@ -65,7 +65,7 @@ namespace McSaas.Migrations
             migrationBuilder.DropColumn(
                 name: "TenantId",
                 schema: "dbo",
-                table: "Resident");
+                table: "Owner");
 
             migrationBuilder.DropColumn(
                 name: "CommunityId",

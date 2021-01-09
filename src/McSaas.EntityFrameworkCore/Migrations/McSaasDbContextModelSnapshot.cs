@@ -1555,15 +1555,15 @@ namespace McSaas.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TenantId")
+                    b.Property<int?>("TenantId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Community","dbo");
+                    b.ToTable("Community");
                 });
 
-            modelBuilder.Entity("McSaas.Houses.House", b =>
+            modelBuilder.Entity("McSaas.Core.Buildings.Building", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1572,6 +1572,55 @@ namespace McSaas.Migrations
 
                     b.Property<int?>("CommunityId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("HouseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HouseNumber")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommunityId");
+
+                    b.HasIndex("HouseId");
+
+                    b.ToTable("Building");
+                });
+
+            modelBuilder.Entity("McSaas.Houses.House", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
@@ -1597,19 +1646,17 @@ namespace McSaas.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ResidentId")
+                    b.Property<int?>("OwnerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TenantId")
+                    b.Property<int?>("TenantId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CommunityId");
+                    b.HasIndex("OwnerId");
 
-                    b.HasIndex("ResidentId");
-
-                    b.ToTable("House","dbo");
+                    b.ToTable("House");
                 });
 
             modelBuilder.Entity("McSaas.MultiTenancy.Tenant", b =>
@@ -1675,7 +1722,7 @@ namespace McSaas.Migrations
                     b.ToTable("AbpTenants");
                 });
 
-            modelBuilder.Entity("McSaas.Sesidents.Resident", b =>
+            modelBuilder.Entity("McSaas.Owners.Owner", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1715,7 +1762,7 @@ namespace McSaas.Migrations
                     b.Property<int>("Sex")
                         .HasColumnType("int");
 
-                    b.Property<int>("TenantId")
+                    b.Property<int?>("TenantId")
                         .HasColumnType("int");
 
                     b.Property<string>("Webchat")
@@ -1723,7 +1770,7 @@ namespace McSaas.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Resident","dbo");
+                    b.ToTable("Owner");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -1922,15 +1969,22 @@ namespace McSaas.Migrations
                         .HasForeignKey("LastModifierUserId");
                 });
 
-            modelBuilder.Entity("McSaas.Houses.House", b =>
+            modelBuilder.Entity("McSaas.Core.Buildings.Building", b =>
                 {
                     b.HasOne("McSaas.Communitys.Community", "Community")
                         .WithMany()
                         .HasForeignKey("CommunityId");
 
-                    b.HasOne("McSaas.Sesidents.Resident", null)
+                    b.HasOne("McSaas.Houses.House", null)
+                        .WithMany("Building")
+                        .HasForeignKey("HouseId");
+                });
+
+            modelBuilder.Entity("McSaas.Houses.House", b =>
+                {
+                    b.HasOne("McSaas.Owners.Owner", null)
                         .WithMany("Houses")
-                        .HasForeignKey("ResidentId");
+                        .HasForeignKey("OwnerId");
                 });
 
             modelBuilder.Entity("McSaas.MultiTenancy.Tenant", b =>

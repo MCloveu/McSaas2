@@ -1,15 +1,18 @@
 ﻿using Abp.AutoMapper;
 using Abp.Domain.Entities.Auditing;
+using Abp.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace McSaas.Communitys.Dto
 {
     [AutoMapTo(typeof(Community))]
     public class CreateCommunityDto
     {
+         const string re = "/ ^[0 - 9] +$/";
         /// <summary>
         /// 小区名
         /// </summary>
@@ -32,12 +35,26 @@ namespace McSaas.Communitys.Dto
         /// <summary>
         /// 楼栋数
         /// </summary>
-        public int BuildingNumber { get; set; }
+        public int BuildingNumber(double number)
+        {
+            if (!new Regex(re).IsMatch(number.ToString()))
+            {
+                throw new UserFriendlyException("楼栋数必须为正整数");
+            }
+            return int.Parse(number.ToString());
+        }
 
         /// <summary>
         /// 房间数
         /// </summary>
-        public int HouseNumber { get; set; }
+        public int HouseNumber(double number)
+        {
+            if (!new Regex(re).IsMatch(number.ToString()))
+            {
+                throw new UserFriendlyException("房间数必须为正整数");
+            }
+            return int.Parse(number.ToString());
+        }
 
         [Required]
         public int TenantId { get; set; }

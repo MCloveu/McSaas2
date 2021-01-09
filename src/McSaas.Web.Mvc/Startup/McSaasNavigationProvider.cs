@@ -26,7 +26,7 @@ namespace McSaas.Web.Startup
                         PageNames.Tenants,
                         L("Tenants"),
                         url: "Tenants",
-                        icon: "fas fa-building",
+                        icon: "fas fa-building", 
                         permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Tenants)
                     )
                 ).AddItem(
@@ -68,26 +68,27 @@ namespace McSaas.Web.Startup
                 )
                 .AddItem( // Menu items below is just for demonstration!
                     new MenuItemDefinition(
-                        "OwnerManagement",
-                        L("OwnerManagement"),
-                        icon: "fas fa-circle"
+                        "CommunityManagement",
+                        L("CommunityManagement"),
+                        icon: "fas fa-circle",
+                        permissionDependency: new SimplePermissionDependency(PermissionNames.Community_Roles)
                     ).AddItem(
                         new MenuItemDefinition(
-                            "Community",
-                            new FixedLocalizableString("Community"),
-                           // L("Community"),
+                        PageNames.Communitys,
+                          L("Communitys"),
+                          url: "Communitys",
+                          icon: "far fa-circle"
+                        )
+                    ).AddItem(
+                        new MenuItemDefinition(
+                            "Houses",
+                            L("Houses"),
                             icon: "far fa-circle"
                         )
                     ).AddItem(
                         new MenuItemDefinition(
-                            "Gallery",
-                            L("Gallery"),
-                            icon: "far fa-circle"
-                        )
-                    ).AddItem(
-                        new MenuItemDefinition(
-                            "House",
-                            L("House"),
+                            "Building",
+                            L("Building"),
                             icon: "far fa-circle"
                         )
                     ).AddItem(

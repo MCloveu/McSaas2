@@ -1593,12 +1593,12 @@ namespace McSaas.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ResidentId")
+                    b.Property<int?>("OwnerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ResidentId");
+                    b.HasIndex("OwnerId");
 
                     b.ToTable("House","dbo");
                 });
@@ -1666,7 +1666,7 @@ namespace McSaas.Migrations
                     b.ToTable("AbpTenants");
                 });
 
-            modelBuilder.Entity("McSaas.Sesidents.Resident", b =>
+            modelBuilder.Entity("McSaas.Sesidents.Owner", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1711,7 +1711,7 @@ namespace McSaas.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Resident","dbo");
+                    b.ToTable("Owner","dbo");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -1912,9 +1912,9 @@ namespace McSaas.Migrations
 
             modelBuilder.Entity("McSaas.Houses.House", b =>
                 {
-                    b.HasOne("McSaas.Sesidents.Resident", null)
+                    b.HasOne("McSaas.Sesidents.Owner", null)
                         .WithMany("Houses")
-                        .HasForeignKey("ResidentId");
+                        .HasForeignKey("OwnerId");
                 });
 
             modelBuilder.Entity("McSaas.MultiTenancy.Tenant", b =>

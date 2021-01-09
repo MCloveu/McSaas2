@@ -38,7 +38,7 @@ namespace McSaas.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Resident",
+                name: "Owner",
                 schema: "dbo",
                 columns: table => new
                 {
@@ -59,7 +59,7 @@ namespace McSaas.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Resident", x => x.Id);
+                    table.PrimaryKey("PK_Owner", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,16 +77,16 @@ namespace McSaas.Migrations
                     DeleterUserId = table.Column<long>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(nullable: true),
-                    ResidentId = table.Column<int>(nullable: true)
+                    OwnerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_House", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_House_Resident_ResidentId",
-                        column: x => x.ResidentId,
+                        name: "FK_House_Owner_OwnerId",
+                        column: x => x.OwnerId,
                         principalSchema: "dbo",
-                        principalTable: "Resident",
+                        principalTable: "Owner",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -94,10 +94,10 @@ namespace McSaas.Migrations
           
 
             migrationBuilder.CreateIndex(
-                name: "IX_House_ResidentId",
+                name: "IX_House_OwnerId",
                 schema: "dbo",
                 table: "House",
-                column: "ResidentId");
+                column: "OwnerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -207,7 +207,7 @@ namespace McSaas.Migrations
                 name: "AbpWebhookEvents");
 
             migrationBuilder.DropTable(
-                name: "Resident",
+                name: "Owner",
                 schema: "dbo");
 
             migrationBuilder.DropTable(

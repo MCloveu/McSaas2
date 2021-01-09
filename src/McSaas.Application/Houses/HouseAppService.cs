@@ -29,8 +29,9 @@ namespace McSaas.Houses
         {
             if (!AbpSession.TenantId.HasValue)
             {
-                throw new InvalidOperationException("不能添加楼户!");
+                throw new InvalidOperationException("不能添加小区!");
             }
+            input.TenantId = AbpSession.TenantId.Value;
             var community = ObjectMapper.Map<House>(input);
 
             await _houseReposity.InsertAsync(community);
@@ -79,6 +80,10 @@ namespace McSaas.Houses
             return dto;
         }
 
+        /// <summary>
+        /// 获取下拉列表
+        /// </summary>
+        /// <returns></returns>
         public async Task<ListResultDto<HouseListDto>> GetHouseList()
         {
             var query = _houseReposity.GetAll();

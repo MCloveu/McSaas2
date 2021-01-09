@@ -6,9 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace McSaas.Sesidents
+namespace McSaas.Owners
 {
-    public class Resident : FullAuditedEntity
+    public class Owner : FullAuditedEntity, IMayHaveTenant
     {
         /// <summary>
         /// 姓名
@@ -43,6 +43,6 @@ namespace McSaas.Sesidents
         /// <summary>
         /// TenantId
         /// </summary>
-        public int TenantId { get; set; }
+        public int? TenantId { get; set; }
     }
 }

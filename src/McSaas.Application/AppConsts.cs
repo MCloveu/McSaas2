@@ -23,7 +23,12 @@
         public const int MaxNameLength = 50;
 
         /// <summary>
-        /// 房号最大长度
+        /// 楼栋名称最大长度
+        /// </summary>
+        public const int MaxBuildingNameLength = 10;
+
+        /// <summary>
+        /// 房间名称最大长度
         /// </summary>
         public const int MaxHouseNameLength = 10;
 

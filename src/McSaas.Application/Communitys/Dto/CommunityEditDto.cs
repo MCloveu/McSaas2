@@ -8,8 +8,8 @@ using Abp.Domain.Entities.Auditing;
 
 namespace McSaas.Communitys.Dto
 {
-    [AutoMapTo(typeof(Community))]
-    public class CommunityEditDto
+    [AutoMap(typeof(Community))]
+    public class CommunityEditDto:Entity<int>
     {
         /// <summary>
         /// 小区名
@@ -28,6 +28,7 @@ namespace McSaas.Communitys.Dto
         /// <summary>
         /// 占地面积
         /// </summary>
+        
         public double Area { get; set; }
 
         /// <summary>
